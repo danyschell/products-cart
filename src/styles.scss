@@ -1,1 +1,118 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+
+html, 
+body { 
+    height: 100%; 
+}
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+/*$custom-primary-palette: (
+    50: #e8eaf6,
+    100: #c5cae9,
+    200: #ec34c4,
+    300: #05198a,
+    400: #a72b4a,
+    500: #e8eaf6,   
+    600: #b47d2a,
+    700: #108a4d,
+    800: #485bc7,
+    900: #1b278d,
+    contrast: (
+        50: #000,
+        100: #000,
+        200: #000,
+        300: #fff,
+        400: #fff,
+        500: #fff,    
+        600: #fff,
+        700: #fff,
+        800: #fff,
+        900: #fff,
+            
+    ),
+);
+*/
+$custom-primary-palette: (
+    50: #3742da,
+    100: #102ad4,
+    200: #2e45ac,
+    300: #3508a0,
+    400: #0915b8,
+    500: #213bcc,   
+    600: #b42a41,
+    700: #090ccc,
+    800: #221fd6,
+    900: #2a1ece,
+    contrast: (
+        50: #000,
+        100: #000,
+        200: #000,
+        300: #fff,
+        400: #fff,
+        500: #fff,    
+        600: #fff,
+        700: #fff,
+        800: #fff,
+        900: #fff,
+            
+    ),
+);
+
+$custom-typography: mat.define-typography-config(
+    $font-family: "Times New Roman, sans-serif",
+);
+
+$custom-primary: mat.define-palette($custom-primary-palette);
+$custom-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$custom-warn: mat.define-palette(mat.$red-palette);
+
+$custom-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $custom-primary,
+            accent: $custom-accent,
+            warn: $custom-warn,
+        ),
+        typography: $custom-typography,
+    )
+);
+
+
+/*@include mat.all-component-themes($custom-theme);*/
+$light-primary: mat.define-palette(mat.$indigo-palette, 500);
+$light-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$light-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $light-primary,
+            accent: $light-accent,
+        ),
+    )
+);
+
+
+$dark-primary: mat.define-palette(mat.$blue-gray-palette, 500);
+$dark-accent: mat.define-palette(mat.$amber-palette, A200, A100, A400);
+
+$dark-theme: mat.define-dark-theme(
+    (
+        color: (
+            primary: $dark-primary,
+            accent: $dark-accent,
+        ),
+    )
+);
+
+body.light-theme {
+    @include mat.all-component-themes($light-theme);
+}
+
+body.dark-theme {
+    @include mat.all-component-themes($dark-theme);
+}
